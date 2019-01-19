@@ -5,6 +5,8 @@
 #include "forks.h"
 #include "threads.h"
 
+static const size_t numberOfWorkers = 8;
+
 int main(int argc, char *argv[])
 {
     if (argc != 2)
@@ -15,11 +17,11 @@ int main(int argc, char *argv[])
 
     if (!strcmp(argv[1], "fork"))
     {
-        runWithFork();
+        runWithFork(numberOfWorkers);
     }
     else if (!strcmp(argv[1], "thread"))
     {
-        runWithThreads();
+        runWithThreads(numberOfWorkers);
     }
     else
     {

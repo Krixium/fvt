@@ -1,8 +1,6 @@
 #ifndef THREADS_H
 #define THREADS_H
 
-#include "uwuLib/uwuLib.h"
-
-void runWithThreads();
+void runWithThreads(const size_t n);
 
 #endif

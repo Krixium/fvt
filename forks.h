@@ -1,6 +1,6 @@
 #ifndef FORKS_H
 #define FORKS_H
 
-void runWithFork();
+void runWithFork(const size_t n);
 
 #endif
