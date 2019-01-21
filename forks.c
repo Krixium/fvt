@@ -31,7 +31,7 @@ void runWithFork(void *(*routine) (void *), void *args, const size_t n)
     printf("%s\n", "running with fork ...");
 
     // Create array of workers
-    pid_t forkResult;
+    pid_t forkResult = -1;
     pid_t workers[n];
     bzero(workers, sizeof(workers));
 

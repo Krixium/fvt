@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <string.h>
-
-#include "uwuLib/uwuLib.h"
+#include "uwulib/uwuLib.h"
 
 #include "threads.h"
 
@@ -48,6 +45,6 @@ void runWithThreads(void *(*routine) (void *), void *args, const size_t n)
         {
             perror("Faield to join worker thread.");
         }
-        printf("All workers have finished\n");
     }
+    printf("All workers have finished\n");
 }
