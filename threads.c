@@ -36,7 +36,7 @@ void runWithThreads(void *(*routine) (void *), void *args, const size_t n)
     // Populate that array
     for (int i = 0; i < n; i++)
     {
-        if (uwuCreateThread(workers + i, &routine, args))
+        if (uwuCreateThread(workers + i, routine, args))
         {
             perror("Creating of a worker thread failed!");
         }
