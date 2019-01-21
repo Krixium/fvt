@@ -17,11 +17,11 @@ int main(int argc, char *argv[])
 
     if (!strcmp(argv[1], "fork"))
     {
-        runWithFork(numberOfWorkers);
+        runWithFork(&workerFunction, NULL, numberOfWorkers);
     }
     else if (!strcmp(argv[1], "thread"))
     {
-        runWithThreads(numberOfWorkers);
+        runWithThreads(&workerFunction, NULL, numberOfWorkers);
     }
     else
     {
@@ -29,6 +29,11 @@ int main(int argc, char *argv[])
     }
     
     return 0;
+}
+
+void *workerFunction(void *args)
+{
+    return NULL;
 }
 
 void printUsage()

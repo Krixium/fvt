@@ -1,6 +1,6 @@
 #ifndef THREADS_H
 #define THREADS_H
 
-void runWithThreads(const size_t n);
+void runWithThreads(void *(*routine) (void *), void *args, const size_t n);
 
 #endif

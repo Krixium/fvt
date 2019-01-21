@@ -3,4 +3,6 @@
 
 void printUsage();
 
+void *workerFunction(void *args);
+
 #endif

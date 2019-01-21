@@ -6,13 +6,6 @@
 
 #include "forks.h"
 
-// Replace this with actual workload
-void *tempForks(void *args)
-{
-    printf("The id of this thread is %d\n", getpid());
-    return NULL;
-}
-
 /*------------------------------------------------------------------------------------------------------------------
 -- FUNCTION:            runWithFork
 --
@@ -24,13 +17,16 @@ void *tempForks(void *args)
 --
 -- PROGRAMMER:          Benny Wang
 --
--- INTERFACE:           void runWithFork(const size_t n)
---                          n: The number of desired workers.
+-- INTERFACE:           void runWithFork(void *(*routine) (void *), void *args, const size_t n)
+--                          routine: the worker routine.
+--                          args: arguements for the routine.
+--                          n: the number of desired workers.
 --
 -- NOTES:
---                      This function will spawn n workers forks and will wait for all of them to complete.
+--                      This function will spawn n workers processes and will wait for all of them to complete the given
+--                      routine.
 ----------------------------------------------------------------------------------------------------------------------*/
-void runWithFork(const size_t n)
+void runWithFork(void *(*routine) (void *), void *args, const size_t n)
 {
     printf("%s\n", "running with fork ...");
 
@@ -60,7 +56,7 @@ void runWithFork(const size_t n)
     // If process is a child
     if (forkResult == 0)
     {
-        tempForks(NULL);
+        routine(args);
     }
     else
     {
