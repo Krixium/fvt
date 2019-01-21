@@ -4,7 +4,7 @@ NAME=fvt.out
 DEBUGNAME=fvtd.out
 
 default:  threads.o forks.o primedecompose.o main.o
-	$(CC) $(CFLAGS)  threads.o forks.o primedecompose.o main.o -o $(NAME) -lpthread -lgmp
+	$(CC) $(CFLAGS) threads.o forks.o primedecompose.o main.o -o $(NAME) -lpthread -lgmp
 
 debug:  threads.o forks.o primedecompose.o main.o
 	$(CC) $(CFLAGS) threads.o forks.o primedecompose.o main.o -ggdb -o $(DEBUGNAME) -lpthread -lgmp

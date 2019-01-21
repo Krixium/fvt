@@ -12,11 +12,11 @@
 
 // global
 pthread_mutex_t mutex;
+FILE *outputFile;
 
 // constants
 static const size_t numberOfWorkers = 8;
 static const size_t numberOfInputs = 16000;
-
 
 int main(int argc, char *argv[])
 {
@@ -25,6 +25,8 @@ int main(int argc, char *argv[])
         printUsage();
         return 0;
     }
+
+    outputFile = uwuOpenFile("output.txt", "w");
 
     if (!strcmp(argv[1], "fork"))
     {
@@ -38,6 +40,8 @@ int main(int argc, char *argv[])
     {
         printUsage();
     }
+
+    uwuCloseFile(&outputFile);
     
     return 0;
 }
@@ -62,13 +66,13 @@ void *workerFunction(void *args)
         l = decompose(n, dest);
 
         pthread_mutex_lock(&mutex);
-        printf("Results for %lu: ", inputs[i]);
+        fprintf(outputFile, "Results for %lu: ", inputs[i]);
         for (int j = 0; j < l; j++)
         {
-            gmp_printf("%s%Zd", j ? " * " : "", dest[j]);
+            gmp_fprintf(outputFile, "%s%Zd", j ? " * " : "", dest[j]);
             mpz_clear(dest[j]);
         }
-        printf("\n");
+        fprintf(outputFile, "\n");
         pthread_mutex_unlock(&mutex);
     }
 
