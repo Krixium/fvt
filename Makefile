@@ -22,4 +22,4 @@ primedecompose.o:
 	$(CC) $(CFLAGS) -O -c primedecompose.c
 
 clean:
-	rm -f *.o *.bak $(NAME) $(DEBUGNAME)
+	rm -f *.o *.txt *.bak $(NAME) $(DEBUGNAME)
