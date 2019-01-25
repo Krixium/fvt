@@ -1,12 +1,12 @@
 CC=gcc
 CFLAGS=-Wall -ggdb
-'{ print $1 }'=fvt.out
+NAME=fvt.out
 DEBUGNAME=fvtd.out
 
-default:  threads.o forks.o primedecompose.o main.o
-	$(CC) $(CFLAGS) threads.o forks.o primedecompose.o main.o -o $('{ print $1 }') -lpthread -lgmp
+default: threads.o forks.o primedecompose.o main.o
+	$(CC) $(CFLAGS) threads.o forks.o primedecompose.o main.o -o $(NAME) -lpthread -lgmp
 
-debug:  threads.o forks.o primedecompose.o main.o
+debug: threads.o forks.o primedecompose.o main.o
 	$(CC) $(CFLAGS) threads.o forks.o primedecompose.o main.o -ggdb -o $(DEBUGNAME) -lpthread -lgmp
 
 main.o:
@@ -22,4 +22,4 @@ primedecompose.o:
 	$(CC) $(CFLAGS) -O -c primedecompose.c
 
 clean:
-	rm -f *.o *.txt *.bak $('{ print $1 }') $(DEBUGNAME)
+	rm -f *.o *.txt *.bak $(NAME) $(DEBUGNAME)
